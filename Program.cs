@@ -32,11 +32,18 @@ using (IHost host = builder.Build())
             {
                 var companyId = ++count % 2 + 1;
                 watch.Restart();
-                var services = await provider.GetServicesForCompanyAsync(companyId, default);
+                IEnumerable<string?> services = null;
+                try
+                {
+                    services = await provider.GetServicesForCompanyAsync(companyId, default);
+                } catch {}
                 watch.Stop();
                 var elapsedMs = watch.ElapsedMilliseconds;
-                Console.WriteLine($"Services:  {string.Join(",", services)}");
-                Console.WriteLine($"Elapsed:  {elapsedMs:N0} ms");
+                if (services != null)
+                {
+                    Console.WriteLine($"Services:   {string.Join(",", services)}");
+                }
+                Console.WriteLine($"Elapsed:    {elapsedMs:N0} ms");
                 Console.ReadLine();
             }
         });
