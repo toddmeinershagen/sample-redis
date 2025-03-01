@@ -44,6 +44,7 @@ using (IHost host = builder.Build())
                     Console.WriteLine($"Services:   {string.Join(",", services)}");
                 }
                 Console.WriteLine($"Elapsed:    {elapsedMs:N0} ms");
+                Console.WriteLine();
                 Console.ReadLine();
             }
         });

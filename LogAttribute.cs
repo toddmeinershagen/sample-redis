@@ -34,7 +34,7 @@ public partial class CompanyServicesProvider
 
         public override void OnException(MethodExecutionArgs arg)
         {
-            Console.WriteLine($"OnException:  {arg.Exception}");
+            Console.WriteLine($"OnException:  {arg.Exception.Message}");
             base.OnException(arg);
         }
 
