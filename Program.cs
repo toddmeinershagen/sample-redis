@@ -24,6 +24,7 @@ using (IHost host = builder.Build())
         lifetime.ApplicationStarted.Register(async () =>
         {
             Console.WriteLine("Started");
+            Console.WriteLine("This is the new log message.");
             Console.ReadLine();
             var watch = System.Diagnostics.Stopwatch.StartNew();
 
